@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Szám Hozzáadása</h1>
+
+<form id="szamForm">
+  <label for="szamInput">Szám:</label>
+  <input type="text" id="szamInput" oninput="validateInput()" />
+  <button type="button" onclick="hozzaad()">Hozzáadás</button>
+</form>
+
+<ul id="szamLista">
+
+</ul>
+
+
+
+<script>
+    function validateInput() {
+   
+      let inputElem = document.getElementById("szamInput");
+      let inputValue = inputElem.value.trim();
+  
+      if (/^\d+$/.test(inputValue)) {
+        
+        inputElem.classList.remove("invalid");
+      } else {
+       
+        inputElem.classList.add("invalid");
+      }
+    }
+  
+    function hozzaad() {
+
+      let inputElem = document.getElementById("szamInput");
+      let inputValue = inputElem.value.trim();
+  
+      if (/^\d+$/.test(inputValue)) {
+   
+        let listaElem = document.createElement("li");
+        listaElem.textContent = inputValue;
+  
+        document.getElementById("szamLista").appendChild(listaElem);
+  
+     
+        inputElem.value = "";
+        inputElem.classList.remove("invalid");
+      } else {
+        
+        inputElem.classList.add("invalid");
+      }
+    }
+  </script>
+</body>
+</html>
